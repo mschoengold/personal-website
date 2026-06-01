@@ -3,19 +3,62 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 226, 232, 240;
-  --background-start-rgb: 2, 4, 8;
-  --background-end-rgb: 10, 15, 30;
+  --foreground-rgb: 196, 205, 216;
+  --background-rgb: 5, 9, 15;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgb(var(--background-rgb));
+  background-image:
+    radial-gradient(900px 520px at 80% -10%, rgba(81, 137, 206, 0.16), transparent 60%),
+    radial-gradient(720px 460px at 8% 16%, rgba(206, 154, 58, 0.06), transparent 55%),
+    radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: auto, auto, 22px 22px;
+  background-attachment: fixed;
+}
+
+/* Subtle film-grain overlay for depth (sits behind content) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Keep all real content above the grain overlay */
+nav,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  /* Mono uppercase "eyebrow" label with a short amber rule */
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.18em] text-accent-300;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply inline-block h-px w-6 bg-accent-400;
+  }
 }
 
 @layer utilities {
@@ -24,31 +67,23 @@ body {
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0a0f1e;
+  background: #0c141e;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #2a3645;
   border-radius: 5px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #5a6878;
 }
 
 /* Selection color */
 ::selection {
-  background-color: #0284c7;
-  color: #ffffff;
+  background-color: #ce9a3a;
+  color: #05090f;
 }

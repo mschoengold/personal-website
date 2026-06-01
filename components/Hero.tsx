@@ -4,39 +4,43 @@ import { ArrowDown } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-20">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="mb-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-dark-100">
-            Michael Schoengold Beatty
-          </h1>
-          <p className="text-xl md:text-2xl text-dark-100 font-light">
-            Business Operations Lead | National Security Strategist
-          </p>
-        </div>
+    <section className="min-h-screen flex items-center px-6 pt-24 pb-16">
+      <div className="max-w-5xl mx-auto w-full">
+        <span className="eyebrow mb-6">Palantir Technologies &middot; Washington, DC</span>
 
-        <p className="text-lg text-dark-200 max-w-2xl mx-auto mb-8 leading-relaxed">
-          I work at the intersection of national security and technology. I currently work at Palantir, focused on defense solutions and the defense industrial base.
+        <h1 className="font-display text-5xl md:text-7xl font-medium leading-[1.05] text-dark-50 text-balance mt-5 mb-4">
+          Michael
+          <br />
+          Schoengold Beatty
+        </h1>
+
+        <p className="font-mono text-sm md:text-base text-dark-200 tracking-wide">
+          Business Operations Lead&nbsp;&nbsp;/&nbsp;&nbsp;National Security Strategist
         </p>
 
-        <div className="flex items-center justify-center gap-4">
+        <p className="text-lg md:text-xl text-dark-100 max-w-2xl mt-7 mb-9 leading-relaxed">
+          I work at the intersection of national security and technology. At Palantir, I focus on defense solutions for the Department of Defense and the broader defense industrial base.
+        </p>
+
+        <div className="flex items-center gap-4 flex-wrap">
           <a
             href="#about"
-            className="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-medium"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 hover:bg-primary-400 text-white rounded-lg transition-colors font-medium"
           >
-            Learn More
+            Learn more
+            <span aria-hidden="true">&rarr;</span>
           </a>
           <a
             href="#contact"
-            className="px-6 py-3 border border-dark-300 hover:border-primary-600 text-dark-100 hover:text-primary-400 rounded-lg transition-colors font-medium"
+            className="px-6 py-3 border border-dark-400 hover:border-accent-400 text-dark-100 hover:text-dark-50 rounded-lg transition-colors font-medium"
           >
-            Get in Touch
+            Get in touch
           </a>
         </div>
 
         <div className="mt-16 animate-bounce">
-          <a href="#about" className="text-dark-200 hover:text-primary-400">
-            <ArrowDown className="mx-auto" size={24} />
+          <a href="#about" className="text-dark-300 hover:text-accent-300 transition-colors" aria-label="Scroll to About">
+            <ArrowDown size={24} />
           </a>
         </div>
       </div>

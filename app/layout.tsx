@@ -1,9 +1,26 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 
-const inter = Inter({ subsets: ["latin"] });
+const display = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const sans = Hanken_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Michael Schoengold Beatty | National Security & Defense Technology Strategist",
@@ -49,7 +66,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/IMG_2880.jpeg',
+        url: '/images/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Michael Schoengold Beatty',
@@ -61,7 +78,7 @@ export const metadata: Metadata = {
     title: "Michael Schoengold Beatty | National Security & Defense Technology",
     description: "National security professional at Palantir Technologies. Former DoD Chief of Staff and NSC Director.",
     creator: '@MSchoengold',
-    images: ['/images/IMG_2880.jpeg'],
+    images: ['/images/og-image.png'],
   },
   robots: {
     index: true,
@@ -73,9 +90,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  verification: {
-    google: 'your-google-verification-code',
   },
 };
 
@@ -90,7 +104,7 @@ export default function RootLayout({
     name: 'Michael Schoengold Beatty',
     alternateName: 'Mike Schoengold Beatty',
     url: 'https://mschoengoldbeatty.com',
-    image: 'https://mschoengoldbeatty.com/images/IMG_2880.jpeg',
+    image: 'https://mschoengoldbeatty.com/images/og-image.png',
     jobTitle: 'Business Operations Lead',
     worksFor: {
       '@type': 'Organization',
@@ -135,14 +149,14 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`dark ${sans.variable} ${display.variable} ${mono.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className="font-sans antialiased">
         <Navigation />
         {children}
       </body>
